@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+function callAjax() {
+        console.log("in1");
+
+        var strURL = "http://192.168.0.18:8983/solr/ct/select";
+        const xhr = new XMLHttpRequest(); 
+
+        xhr.open('GET', strURL, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if (xhr.status == 200){
+                    console.log(xhr.getAllResponseHeaders());
+                    console.log(xhr.response);
+                }
+            }
+        }
+    }
+    
+function setdiv(){
+
+}
+</script>
+<title>ajaxTest</title>
+</head>
+<body>
+<form>
+<input type="text" id="searchQuery">
+<input type="button" value="SUBMIT" onclick="callAjax()">
+
+<div id="myDiv"></div>
+</form>
+</body>
+</html>
